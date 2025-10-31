@@ -205,6 +205,44 @@
       .logo{ height: 48px; }
       body::before{ animation: none; opacity: 0.02; filter: blur(3px); background-position: center 18%; background-size: 68vw; }
     }
+    /* ==== FIX HEADER ALINEADO Y LOGO MÁS GRANDE ==== */
+.header-content {
+  display: flex;
+  align-items: center;       /* centra verticalmente el logo y el título */
+  justify-content: flex-start;
+  gap: 20px;                 /* espacio entre logo y texto */
+  flex-wrap: nowrap;         /* evita que se apile */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 90px;              /* tamaño aumentado */
+  width: auto;
+  border-radius: 14px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.header-content h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin: 0;
+  color: var(--clr-text);
+  line-height: 1.1;
+  letter-spacing: .3px;
+}
+
+/* En pantallas chicas, que se apile */
+@media (max-width: 600px) {
+  .header-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .logo {
+    height: 70px;
+  }
+}
   </style>
 </head>
 <body>
