@@ -6,15 +6,14 @@
   <title>Catálogo de Servicios Premium – Ftstreaming</title>
   <style>
     :root {
-      /* Paleta oscura, sutil */
-      --clr-bg: #0f1116;           /* fondo principal */
-      --clr-elev: #141823;         /* tarjetas */
-      --clr-elev-2: #1a2030;       /* hover sutil */
-      --clr-border: #242a3a;       /* bordes discretos */
-      --clr-primary: #e05252;      /* acento suave (rojo cálido) */
-      --clr-accent: #8bb8ff;       /* azul tenue para subtítulos */
-      --clr-text: #e7e9ee;         /* texto principal */
-      --clr-text-light: #aab1c5;   /* texto secundario */
+      --clr-bg: #0f1116;
+      --clr-elev: #141823;
+      --clr-elev-2: #1a2030;
+      --clr-border: #242a3a;
+      --clr-primary: #e05252;
+      --clr-accent: #8bb8ff;
+      --clr-text: #e7e9ee;
+      --clr-text-light: #aab1c5;
 
       --radius: 16px;
       --shadow: 0 6px 20px rgba(0,0,0,.25);
@@ -31,9 +30,9 @@
       --fs-body: 1rem;
       --fs-small: .9rem;
 
-      /* Marca de agua (súper sutil) */
+      /* Marca de agua (opcional) */
       --marca-size: clamp(560px, 64vw, 1200px);
-      --marca-opacity: 0.035;      /* MUY tenue */
+      --marca-opacity: 0.035;
       --marca-blur: 2px;
       --marca-shift-x: 1.4vw;
       --marca-shift-y: 0.8vh;
@@ -43,7 +42,8 @@
 
     * { box-sizing: border-box; }
     html, body {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
       background: radial-gradient(1200px 700px at 70% -10%, #121624 0%, #0f1116 55%, #0f1116 100%);
       color: var(--clr-text);
@@ -58,32 +58,47 @@
       border-bottom: 1px solid var(--clr-border);
     }
 
-    .header-container {
-      display: flex; align-items: center; justify-content: flex-start;
-      gap: 20px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto;
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+      flex-wrap: nowrap;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    . {
-      width: 132px; height: auto; border-radius: 12px; flex: 0 0 auto;
+    .logo {
+      height: 72px;           /* ajustá a gusto (48–72px) */
+      width: auto;
+      border-radius: 12px;
+      flex: 0 0 auto;
       box-shadow: 0 4px 18px rgba(0,0,0,.35);
     }
 
-    .header-text { flex: 1 1 auto; min-width: 220px; }
-    .header-text h1 {
-      margin:.1em 0; font-size: var(--fs-h1); line-height:1.05;
-      color: var(--clr-text); letter-spacing: .2px;
+    .header-content h1 {
+      font-size: var(--fs-h1);
+      margin: 0;
+      color: var(--clr-text);
+      letter-spacing: .2px;
+      line-height: 1.1;
     }
-    header p { margin:0; font-size:var(--fs-small); color:var(--clr-text-light); }
 
-    .badges {
-      display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 14px; font-size:var(--fs-small);
+    .header-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px auto 0;
+      justify-content: flex-start;
+      max-width: 1100px;
     }
-    .badges span {
+    .header-badges .badge {
       background: rgba(26,32,48,.6);
       color: var(--clr-text);
       padding: 6px 12px;
       border: 1px solid var(--clr-border);
       border-radius: 999px;
+      font-size: var(--fs-small);
     }
 
     /* MAIN / CARDS */
@@ -164,27 +179,17 @@
     }  
     footer a{ color: var(--clr-accent); text-decoration: none; font-weight: 700; }
 
-    /* Responsive */
-    @media (max-width: 720px) {
-      . { width: 96px; }
-      .header-container { gap:12px; padding:0; }
-      header { padding: 14px 12px; }
-      main { padding: 20px 14px 56px; }
-      .badges { justify-content:flex-start; }
-    }
-
-    /* === Marca de agua: grande, tenue, con micro-movimiento === */
+    /* Marca de agua grande y tenue (si la usás) */
     body{ position: relative; z-index: 0; }
     body::before{
       content:""; position: fixed; inset: 0;
-      background-image: url('logo.jpeg'); /* tu logo */
+      background-image: url('img/logo.jpeg'); /* tu logo */
       background-repeat: no-repeat;
-      background-position: right 8% center;  /* discreto a la derecha */
+      background-position: right 8% center;
       background-size: var(--marca-size);
       opacity: var(--marca-opacity);
       filter: blur(var(--marca-blur));
       pointer-events: none; z-index: 0;
-
       transform: translate3d(0,0,0) scale(1);
       animation: logoFloat var(--marca-dur) ease-in-out infinite alternate;
     }
@@ -192,65 +197,14 @@
       0%   { transform: translate3d(0,0,0) scale(1); }
       100% { transform: translate3d(var(--marca-shift-x), var(--marca-shift-y), 0) scale(var(--marca-scale)); }
     }
-    @media (prefers-reduced-motion: reduce){
-      body::before{ animation: none; }
-    }
-
-    /* Contenido por encima */
     header, main, .cta-wrapper, footer { position: relative; z-index: 1; }
-    /* ====== PARCHE MOBILE (<= 480px) ====== */
-@media (max-width: 480px) {
-  /* Marca de agua MUY discreta en móvil */
-  :root{
-    --marca-size: 68vw;      /* antes era 64–70vw desktop; en móvil lo bajamos fuerte */
-    --marca-opacity: 0.02;   /* más tenue */
-    --marca-blur: 3px;       /* un toque más de blur para no distraer */
-  }
-  body::before{
-    background-position: center 18%; /* más arriba/centrado para que no tape el contenido */
-    animation: none;                 /* sin movimiento en móvil para evitar mareo */
-  }
 
-  /* Header compacto */
-  header{ padding: 12px 12px; }
-  .header-container{ gap: 10px; }
-  .logo{
-    width: auto;
-    max-height: 44px;        /* antes 56–72px; en móvil 44px */
-    border-radius: 10px;
-    box-shadow: none;
-  }
-  .header-text h1{
-    font-size: clamp(1.2rem, 5vw, 1.6rem);
-    margin: .25em 0 .1em;
-  }
-  header p{ font-size: .8rem; }
-
-  /* Layout y tarjetas */
-  main{ padding: 16px 12px 72px; }
-  section{ margin-bottom: 20px; }
-  section h2{ font-size: clamp(1rem, 4vw, 1.2rem); }
-  .card{ padding: 12px; gap: 10px; }
-  .card label{ gap: 10px; }
-  .card input[type="checkbox"]{ width: 18px; height: 18px; }
-  .card .name{ font-size: .95rem; }
-  .price{ font-size: .95rem; }
-
-  /* Botón pegajoso */
-  .cta-wrapper{ padding: 10px; }
-  .cta-wrapper button{
-    font-size: 1rem;
-    padding: 12px 14px;
-    max-width: 100%;
-  }
-
-  /* Cualquier imagen dentro del contenido (por si tenés un banner) */
-  img, video, canvas{
-    max-width: 100%;
-    height: auto;
-  }
-}
-
+    /* Mobile tweaks */
+    @media (max-width: 600px){
+      .header-content{ flex-wrap: wrap; gap: 10px; }
+      .logo{ height: 48px; }
+      body::before{ animation: none; opacity: 0.02; filter: blur(3px); background-position: center 18%; background-size: 68vw; }
+    }
   </style>
 </head>
 <body>
