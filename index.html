@@ -198,6 +198,59 @@
 
     /* Contenido por encima */
     header, main, .cta-wrapper, footer { position: relative; z-index: 1; }
+    /* ====== PARCHE MOBILE (<= 480px) ====== */
+@media (max-width: 480px) {
+  /* Marca de agua MUY discreta en móvil */
+  :root{
+    --marca-size: 68vw;      /* antes era 64–70vw desktop; en móvil lo bajamos fuerte */
+    --marca-opacity: 0.02;   /* más tenue */
+    --marca-blur: 3px;       /* un toque más de blur para no distraer */
+  }
+  body::before{
+    background-position: center 18%; /* más arriba/centrado para que no tape el contenido */
+    animation: none;                 /* sin movimiento en móvil para evitar mareo */
+  }
+
+  /* Header compacto */
+  header{ padding: 12px 12px; }
+  .header-container{ gap: 10px; }
+  .logo{
+    width: auto;
+    max-height: 44px;        /* antes 56–72px; en móvil 44px */
+    border-radius: 10px;
+    box-shadow: none;
+  }
+  .header-text h1{
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    margin: .25em 0 .1em;
+  }
+  header p{ font-size: .8rem; }
+
+  /* Layout y tarjetas */
+  main{ padding: 16px 12px 72px; }
+  section{ margin-bottom: 20px; }
+  section h2{ font-size: clamp(1rem, 4vw, 1.2rem); }
+  .card{ padding: 12px; gap: 10px; }
+  .card label{ gap: 10px; }
+  .card input[type="checkbox"]{ width: 18px; height: 18px; }
+  .card .name{ font-size: .95rem; }
+  .price{ font-size: .95rem; }
+
+  /* Botón pegajoso */
+  .cta-wrapper{ padding: 10px; }
+  .cta-wrapper button{
+    font-size: 1rem;
+    padding: 12px 14px;
+    max-width: 100%;
+  }
+
+  /* Cualquier imagen dentro del contenido (por si tenés un banner) */
+  img, video, canvas{
+    max-width: 100%;
+    height: auto;
+  }
+}
+
   </style>
 </head>
 <body>
