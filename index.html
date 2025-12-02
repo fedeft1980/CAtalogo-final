@@ -243,6 +243,113 @@
     height: 70px;
   }
 }
+    /* =======================
+   SKIN SERVIFAST (SOLO COLORES/ESTILO)
+   Pegar al FINAL del <style>
+   ======================= */
+
+/* Paleta ServiFast aplicada a tus variables */
+:root{
+  --clr-bg: #0b1020;
+  --clr-elev: #0f1730;
+  --clr-elev-2: #0b1328;
+  --clr-border: rgba(255,255,255,0.10);
+
+  --clr-primary: #2d6bff;   /* azul principal */
+  --clr-accent: #0ea5e9;    /* celeste acento */
+  --clr-text: #e6e9f2;
+  --clr-text-light: #aab1c5;
+
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow-hover: 0 12px 38px rgba(0,0,0,0.45);
+}
+
+/* Fondo general tipo ServiFast */
+html, body{
+  background:
+    radial-gradient(1200px 700px at 10% -10%, #1b2a6b 0%, transparent 55%),
+    radial-gradient(1000px 600px at 100% 0%, #0ea5e9 0%, transparent 50%),
+    radial-gradient(900px 600px at 40% 110%, #22c55e 0%, transparent 50%),
+    var(--clr-bg) !important;
+  color: var(--clr-text);
+}
+
+/* Header con glass + borde suave */
+header{
+  background: linear-gradient(180deg, rgba(11,16,32,.95), rgba(11,16,32,.5)) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* Badges más "pill" tipo ServiFast */
+.header-badges .badge{
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: var(--clr-text) !important;
+}
+
+/* Secciones / títulos acento celeste */
+section h2{
+  color: var(--clr-accent) !important;
+}
+
+/* Cards exactamente con look ServiFast */
+.card{
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  box-shadow: var(--shadow) !important;
+}
+.card:hover{
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(255,255,255,0.16) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* Checkbox con color ok/azul ServiFast */
+.card input[type="checkbox"]{
+  background: rgba(0,0,0,0.25) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+}
+.card input[type="checkbox"]:checked{
+  background: linear-gradient(180deg, var(--clr-primary), var(--clr-accent)) !important;
+  border-color: var(--clr-primary) !important;
+}
+
+/* Precio en pill azul fuerte como ServiFast */
+.card .price,
+.grouped-options .price{
+  color: #fff !important;
+  background: #0a3cff !important;
+  padding: 4px 9px !important;
+  border-radius: 8px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 6px 18px rgba(10,60,255,.35) !important;
+}
+
+/* Sub-opciones agrupadas */
+.grouped-options{
+  background: rgba(255,255,255,0.04) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+
+/* Botón CTA WhatsApp con degradé ServiFast */
+.cta-wrapper{
+  background: linear-gradient(180deg, rgba(11,16,32,0), rgba(11,16,32,.9) 45%, rgba(11,16,32,1) 100%) !important;
+  border-top: 1px solid rgba(255,255,255,0.08) !important;
+}
+.cta-wrapper button{
+  background: linear-gradient(90deg, var(--clr-primary), var(--clr-accent)) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 30px rgba(34,211,238,0.28) !important;
+}
+
+/* Links/footer */
+footer, footer a{
+  color: var(--clr-text-light) !important;
+}
+footer a{
+  color: #93c5fd !important;
+}
+
   </style>
 </head>
 <body>
